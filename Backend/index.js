@@ -9,14 +9,17 @@ import cookieParser from 'cookie-parser';
 
 const app=express();
 
+// configure middleware
 app.use(cors());
 app.use(express.json())
 app.use(cookieParser());
 
+// connect the server
 app.listen(process.env.PORT || 3000,()=>{
   console.log(`Server is running at port ${process.env.PORT}`);
 })
 
+// connect the database
 mongoose.connect(process.env.MONGODB_URL)
         .then(()=>{
           console.log("Mongodb Connected");
